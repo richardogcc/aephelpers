@@ -196,13 +196,13 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center h-auto justify-center bg-slate-100">
-      {showModal && (
+      {showModal ? (
         <div className="modal container m-4 w-auto">
           <div className="modal-content">
-            <form className="shadow-2xl" onSubmit={handleSubmit}>
+            <form className="shadow-2xl rounded-lg" onSubmit={handleSubmit}>
               <div className="">
                 {/* <h2 className="text-base font-semibold leading-7 text-gray-900">Variables</h2> */}
-                <div className="flex flex-row gap-x-12 my-6 px-8">
+                <div className="flex flex-row gap-x-12 py-6 px-8">
                   <div className="flex flex-col gap-y-4">
                     <h3 className="text-sm font-semibold text-gray-900">DEV</h3>
                     <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-1 start">
@@ -464,7 +464,7 @@ export default function Home() {
             </form>
           </div>
         </div>
-      )}
+      ) : (
       <div className="flex flex-row container m-4 w-100 h-[40rem] my-8 shadow-2xl rounded-lg">
         <div className="container flex flex-col w-1/2 p-4 gap-4">
           <form onSubmit={handleSubmitResponse}>
@@ -519,6 +519,8 @@ export default function Home() {
             {Object.keys(response).length !== 0 ? <JsonView value={response} style={vscodeTheme} className="h-100 p-4" /> : <pre className="text-black p-2">{JSON.stringify({})}</pre>}
         </div>
       </div>
+
+      )}
     </main>
   );
 }
