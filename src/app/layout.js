@@ -1,3 +1,5 @@
+import GeneralContext from "@/context/GeneralContext";
+import InitialConfigContext from "@/context/InitialConfigContext";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -11,7 +13,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <GeneralContext>
+        <InitialConfigContext>
+          <body className={inter.className}>{children}</body>
+        </InitialConfigContext>
+      </GeneralContext>
     </html>
   );
 }
